@@ -1,0 +1,16 @@
+import React from 'react';
+
+const Settings = () => {
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Settings</h2>
+      <p className="text-gray-600">Adjust your preferences.</p>
+    </div>
+  );
+};
+
+export default Settings;
+
+
+
+
