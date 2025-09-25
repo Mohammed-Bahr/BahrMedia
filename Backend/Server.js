@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose"
 import dotenv from "dotenv";
 import postRoutes from "./MainPosts/PostRoutes.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
@@ -10,7 +11,7 @@ const port = process.env.PORT_NUMBER || 5000;
 // Parse JSON and URL-encoded bodies so req.body is available
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 mongoose.connect("mongodb://localhost:27017/BahrMedia").then(() => {
     console.log("Connected to MongoDB");
 }).catch((err) => {

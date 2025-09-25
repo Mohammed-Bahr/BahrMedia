@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Home, MessageCircle, Search, Plus, User, Bell, Bookmark, Settings } from 'lucide-react';
-
 const SideBar = () => {
-  const [activeItem, setActiveItem] = useState('home');
-
   const menuItems = [
-    { id: 'home', label: 'Home', icon: Home, to: '/' },
+    { id: 'home', label: 'Home', icon: Home, to: '/home' },
     { id: 'search', label: 'Search', icon: Search, to: '/search' },
     { id: 'messages', label: 'Messages', icon: MessageCircle, to: '/messages' },
     { id: 'notifications', label: 'Notifications', icon: Bell, to: '/notifications' },
@@ -14,10 +11,6 @@ const SideBar = () => {
     { id: 'profile', label: 'Profile', icon: User, to: '/profile' },
     { id: 'settings', label: 'Settings', icon: Settings, to: '/settings' },
   ];
-
-  const handleItemClick = (itemId) => {
-    setActiveItem(itemId);
-  };
 
   const handleCreatePost = () => {
     // Handle create post action
@@ -35,24 +28,23 @@ const SideBar = () => {
       <nav className="flex-1 px-4 py-6 space-y-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activeItem === item.id;
-          
           return (
             <NavLink
               key={item.id}
               to={item.to}
-              onClick={() => handleItemClick(item.id)}
-              className={({ isActive: routeActive }) => `w-full flex items-center px-4 py-3 rounded-lg text-left transition-all duration-200 hover:bg-gray-100 ${
-                routeActive || isActive
-                  ? 'bg-blue-50 text-blue-600 font-medium'
-                  : 'text-gray-700 hover:text-gray-900'
+              className={({ isActive }) => `w-full flex items-center px-4 py-3 rounded-lg text-left transition-all duration-200 hover:bg-gray-100 ${
+                isActive ? 'bg-blue-50 text-blue-600 font-medium' : 'text-gray-700 hover:text-gray-900'
               }`}
             >
-              <Icon
-                size={20}
-                className={`mr-3 ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
-              />
-              <span className="text-base">{item.label}</span>
+              {({ isActive }) => (
+                <>
+                  <Icon
+                    size={20}
+                    className={`mr-3 ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
+                  />
+                  <span className="text-base">{item.label}</span>
+                </>
+              )}
             </NavLink>
           );
         })}

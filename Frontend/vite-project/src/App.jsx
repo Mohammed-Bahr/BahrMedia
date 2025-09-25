@@ -8,18 +8,20 @@ import Notifications from './pages/Notifications'
 import Bookmarks from './pages/Bookmarks'
 import Profile from './pages/Profile'
 import Settings from './pages/Settings'
+import Commnets from './pages/Commnets'
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}> 
-          <Route index element={<Home />} />
-          <Route path="search" element={<Search />} />
-          <Route path="messages" element={<Messages />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="bookmarks" element={<Bookmarks />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/" element={<MainLayout />}> 
+          <Route path='/home' element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/comments" element={<Commnets />} />
         </Route>
       </Routes>
     </BrowserRouter>
