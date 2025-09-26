@@ -11,11 +11,12 @@ import Commnets from './pages/Commnets'
 import { Login } from './pages/Login'
 import { useUser } from '@clerk/clerk-react'
 const App = () => {
-  const user = useUser()
+  const { isLoaded, isSignedIn } = useUser()
+  if (!isLoaded) return null
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={!user ? <Login /> : <MainLayout /> } >
+        <Route path="/" element={isSignedIn ? <MainLayout /> : <Login /> } >
               <Route path='/home' element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/messages" element={<Messages />} />
