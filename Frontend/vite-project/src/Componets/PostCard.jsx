@@ -55,7 +55,7 @@ export default function PostCard({ post }) {
             className="flex items-center gap-1 text-gray-500"
           >
             <MessageCircle size={16} />
-            <button>{post.commentCount || 0}</button>
+            <span>{post.commentCount || 0}</span>
           </button>
         </div>
       </div>
